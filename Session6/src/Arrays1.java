@@ -81,6 +81,14 @@ public class Arrays1 {
 		int[][] a6 = new int[3][5]; // Array of Arrays with 3 Arrays, each having 5 elements
 		
 		// int[][] a7 = new int[][5]; error
+		
+		
+		for(int[] a : a3){
+			for(int elm : a){
+				System.out.print(elm+" ");
+			}
+			System.out.println();
+		}
 	}
 	
 
