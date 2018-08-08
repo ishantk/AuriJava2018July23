@@ -1,4 +1,5 @@
 class Product{
+	// Attributes of Product Object
 	String name;
 	String brand;
 	int code;
