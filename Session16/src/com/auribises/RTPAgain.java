@@ -1,5 +1,5 @@
 package com.auribises;
-
+/*
 abstract class Product{
 	
 	abstract void showProduct();
@@ -50,3 +50,4 @@ public class RTPAgain {
 	}
 
 }
+*/
