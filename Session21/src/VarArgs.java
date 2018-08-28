@@ -19,6 +19,10 @@ public class VarArgs {
 	// WAP where you shall pass variable arguments as objects eg: Student
 	// Sort the Array based on Roll Number of Students
 	
+	void studentsList(Student...students){
+		
+	}
+	
 	
 	public static void main(String[] args) {
 
