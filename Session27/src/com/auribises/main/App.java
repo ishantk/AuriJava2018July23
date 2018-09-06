@@ -1,6 +1,8 @@
 package com.auribises.main;
 
+import com.auribises.db.JDBCHelper;
 import com.auribises.model.Employee;
+import com.auribises.view.RegisterEmpoyeeGUI;
 
 /*
  * SQL Intro:
@@ -54,20 +56,20 @@ public class App {
 		
 		Employee emp1 = new Employee();
 		
-		Employee emp2 = new Employee(101,"John",30000,"john@exmaple.com","Redwood Shores");
+		Employee emp2 = new Employee(0,"John",30000,"john@exmaple.com","Redwood Shores");
 		
 		Employee emp3 = new Employee();
-		emp3.setEid(201);
+		emp3.setEid(0);
 		emp3.setName("Jennie");
 		emp3.setEmail("jennie@example.com");
 		emp3.setSalary(40000);
 		emp3.setAddress("Country Homes");
 		
 		Employee emp4 = new Employee();
-		emp4.eid = 301;
-		emp4.name = "Jack";
-		emp4.email = "jack@example.com";
-		emp4.salary = 35000;
+		emp4.eid = 0;
+		emp4.name = "Joe";
+		emp4.email = "joe@example.com";
+		emp4.salary = 35700;
 		emp4.address = "Pristine Magnum";
 		
 		System.out.println(emp1); // System.out.println(emp1.toString());
@@ -87,6 +89,17 @@ public class App {
 		// Persistance 1. -> Files
 		// Persistance 2. -> Database | RDBMS | SQL -> MySQL
 				
+		/*JDBCHelper helper = new JDBCHelper();
+		helper.createConnection();
+		//helper.saveEmployee(emp2);
+		//helper.saveEmployee(emp3);
+		helper.saveEmployee(emp4);
+		helper.closeConnection();*/
+		
+		RegisterEmpoyeeGUI gui = new RegisterEmpoyeeGUI();
+		gui.showGUI();
+		
+		
 		System.out.println("==App Finished==");
 
 	}
