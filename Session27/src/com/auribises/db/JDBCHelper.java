@@ -3,7 +3,9 @@ package com.auribises.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.auribises.model.Employee;
 
@@ -41,8 +43,6 @@ public class JDBCHelper {
 		}
 	}
 	
-	
-	
 	public void saveEmployee(Employee emp){
 		try {
 			
@@ -70,6 +70,83 @@ public class JDBCHelper {
 			System.out.println("Some Exception: "+e);
 		}
 	}
+	
+	public void updateEmployee(Employee emp){
+		try {
+			
+			// indexing is always from 1
+			String sql = "update Employee set name = ?, salary = ?, email = ?, address = ? where eid = ?";
+			pStmt = con.prepareStatement(sql);
+			
+			pStmt.setString(1, emp.name);
+			pStmt.setInt(2, emp.salary);
+			pStmt.setString(3, emp.email);
+			pStmt.setString(4, emp.address);
+			pStmt.setInt(5, emp.eid);
+			
+			int i = pStmt.executeUpdate();
+			System.out.println("Row(s) Updated: "+i);
+			
+		} catch (Exception e) {
+			System.out.println("Some Exception: "+e);
+		}
+	}
+	
+	public void deleteEmployee(int eid){
+		try {
+			
+			// indexing is always from 1
+			String sql = "delete from Employee where eid = ?";
+			
+			pStmt = con.prepareStatement(sql);
+			pStmt.setInt(1, eid);
+			
+			int i = pStmt.executeUpdate();
+			System.out.println("Row(s) Deleted: "+i);
+			
+		} catch (Exception e) {
+			System.out.println("Some Exception: "+e);
+		}
+	}
+	
+	public ArrayList<Employee> retrieveEmployees(){
+		
+		ArrayList<Employee> list = new ArrayList<Employee>();
+		
+		try {
+			
+			// Retrieve All
+			String sql = "Select * from Employee";
+			
+			// Retrieve Selection
+			//String sql = "Select * from Employee where eid = ?";
+			
+			pStmt = con.prepareStatement(sql);
+			ResultSet rs = pStmt.executeQuery();
+			
+			while(rs.next()){
+				Employee e = new Employee();
+				e.eid = rs.getInt(1);
+				e.name = rs.getString(2);
+				e.salary = rs.getInt(3);
+				e.email = rs.getString(4);
+				e.address = rs.getString(5);
+				//System.out.println(e);
+				//System.out.println("*********************************************");
+				
+				list.add(e);
+				
+			}
+			
+			rs.close();
+			
+		} catch (Exception e) {
+			System.out.println("Some Exception: "+e);
+		}
+		
+		return list;
+	}
+	
 	
 	public void closeConnection(){
 		try {

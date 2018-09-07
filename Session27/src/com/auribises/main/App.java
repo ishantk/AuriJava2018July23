@@ -1,5 +1,7 @@
 package com.auribises.main;
 
+import java.util.ArrayList;
+
 import com.auribises.db.JDBCHelper;
 import com.auribises.model.Employee;
 import com.auribises.view.RegisterEmpoyeeGUI;
@@ -96,9 +98,30 @@ public class App {
 		helper.saveEmployee(emp4);
 		helper.closeConnection();*/
 		
-		RegisterEmpoyeeGUI gui = new RegisterEmpoyeeGUI();
-		gui.showGUI();
+		//RegisterEmpoyeeGUI gui = new RegisterEmpoyeeGUI();
+		//gui.showGUI();
 		
+		Employee emp = new Employee();
+		emp.setEid(4);
+		emp.setName("Jennie Watson");
+		emp.setEmail("jennie.w@example.com");
+		emp.setSalary(47500);
+		emp.setAddress("Country Homes North");
+		
+		JDBCHelper helper = new JDBCHelper();
+		helper.createConnection();
+		//helper.updateEmployee(emp);
+		//helper.deleteEmployee(4);
+		//helper.deleteEmployee(5);
+		//helper.deleteEmployee(7);
+		
+		ArrayList<Employee> employees = helper.retrieveEmployees();
+		
+		for(Employee e : employees){
+			System.out.println(e);
+		}
+		
+		helper.closeConnection();
 		
 		System.out.println("==App Finished==");
 

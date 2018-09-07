@@ -9,47 +9,61 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 public class RegisterUserGUI implements ActionListener{
 	
 	// Declare References to the UI Components
-	Frame fr;
+	/*Frame fr;
 	Label lblTitle, lblName, lblEmail, lblPassword;
 	TextField txtName, txtEmail, txtPassword;
 	Button btnRegister, btnCancel;
-	Panel pnlTitle, pnlName, pnlEmail, pnlPassword, pnlButtons, pnlAll;
+	Panel pnlTitle, pnlName, pnlEmail, pnlPassword, pnlButtons, pnlAll;*/
+	
+	JFrame fr;
+	JLabel lblTitle, lblName, lblEmail, lblPassword;
+	JTextField txtName, txtEmail, txtPassword;
+	JButton btnRegister, btnCancel;
+	//JPasswordField pField;
+	JPanel pnlTitle, pnlName, pnlEmail, pnlPassword, pnlButtons, pnlAll;
 	
 	// Constructor will initialize all the references !!
 	RegisterUserGUI(){
 		
 		// Create Objects of UI Components
-		fr = new Frame("Register User");
+		fr = new JFrame("Register User");
 		//fr.setTitle("Register User");
 		
-		lblTitle = new Label("Enter Your Details !!");
+		lblTitle = new JLabel("Enter Your Details !!");
 		
-		lblName = new Label();
+		lblName = new JLabel();
 		lblName.setText("Enter Your Name");
 		
-		lblEmail = new Label("Enter Your Email");
-		lblPassword = new Label("Enter Your Password");
+		lblEmail = new JLabel("Enter Your Email");
+		lblPassword = new JLabel("Enter Your Password");
 		
-		txtName = new TextField(16);
-		txtEmail = new TextField(16);
-		txtPassword = new TextField(16);
+		txtName = new JTextField(16);
+		txtEmail = new JTextField(16);
+		txtPassword = new JTextField(16);
 		
-		btnRegister = new Button("Register");
-		btnCancel = new Button();
-		btnCancel.setLabel("Cancel");
+		btnRegister = new JButton("Register");
+		btnCancel = new JButton("Cancel");
+		//btnCancel.setLabel("Cancel");
 		
 		btnRegister.addActionListener(this);
 		btnCancel.addActionListener(this);
 		
-		pnlTitle = new Panel(); 
-		pnlName = new Panel();  
-		pnlEmail = new Panel();
-		pnlPassword = new Panel();  
-		pnlButtons = new Panel(); 
-		pnlAll = new Panel(); 
+		pnlTitle = new JPanel(); 
+		pnlName = new JPanel();  
+		pnlEmail = new JPanel();
+		pnlPassword = new JPanel();  
+		pnlButtons = new JPanel(); 
+		pnlAll = new JPanel(); 
 		
 	}
 	
